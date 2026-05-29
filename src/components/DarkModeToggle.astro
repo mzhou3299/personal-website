@@ -1,0 +1,27 @@
+---
+const STORAGE_KEY = 'portfolio-dark-mode';
+---
+<button id="dark-mode-toggle" class="rounded-full border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200" type="button" aria-label="Toggle dark mode">
+  Dark
+</button>
+
+<script type="module">
+const button = document.getElementById('dark-mode-toggle');
+const storageKey = 'portfolio-dark-mode';
+const root = document.documentElement;
+const updateMode = (mode) => {
+  root.classList.toggle('dark', mode === 'dark');
+  button.textContent = mode === 'dark' ? 'Light' : 'Dark';
+};
+
+const saved = localStorage.getItem(storageKey);
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+let currentMode = saved || (prefersDark ? 'dark' : 'light');
+updateMode(currentMode);
+
+button.addEventListener('click', () => {
+  currentMode = currentMode === 'dark' ? 'light' : 'dark';
+  updateMode(currentMode);
+  localStorage.setItem(storageKey, currentMode);
+});
+</script>
