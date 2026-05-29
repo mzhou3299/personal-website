@@ -1,0 +1,119 @@
+---
+import Navbar from '../components/Navbar.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import ExperienceCard from '../components/ExperienceCard.astro';
+---
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matthew Zhou | Finance + Computer Science @ NYU</title>
+    <meta
+      name="description"
+      content="I'm a NYU student studying Finance and Computer Science, building data-driven tools and dashboards that turn messy data into practical insights."
+    />
+  </head>
+  <body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+    <Navbar />
+    <main class="container">
+      <section id="about" class="section py-16">
+        <div class="max-w-3xl">
+          <p class="text-sm uppercase tracking-[0.32em] text-slate-500 dark:text-slate-400">Finance + Computer Science @ NYU</p>
+          <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-950 dark:text-white sm:text-5xl">
+            Matthew Zhou
+          </h1>
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-700 dark:text-slate-300">
+            I'm focused on building data-driven tools at the intersection of software, analytics, and finance. I enjoy turning messy data into clear insights and shipping practical solutions through iteration and experimentation.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#projects" class="rounded-full border border-slate-300 bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700 dark:border-slate-600 dark:bg-slate-100 dark:text-slate-950 dark:hover:bg-slate-200">
+              View Projects
+            </a>
+            <a href="#" class="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800">
+              Resume
+            </a>
+            <a href="#" class="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800">
+              GitHub
+            </a>
+            <a href="#" class="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800">
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <p class="text-sm uppercase tracking-[0.32em] text-slate-500 dark:text-slate-400">Projects</p>
+            <h2 class="mt-3 text-3xl font-semibold text-slate-950 dark:text-white">Selected work</h2>
+          </div>
+        </div>
+        <div class="mt-8 grid gap-5 md:grid-cols-2">
+          <ProjectCard
+            title="NFL Metric Stability"
+            description="I analyzed how quickly NFL performance metrics stabilize during the season and whether early-season metrics predict future outcomes. I used statistical analysis and bootstrapping to separate signal from noise in football analytics."
+            tech="Python · Pandas · Statistics · Data Visualization"
+          />
+          <ProjectCard
+            title="Citi Bike Traffic Analysis"
+            description="I analyzed NYC Citi Bike usage patterns to understand station-level demand, geographic hotspots, and system imbalances using trip data and external datasets."
+            tech="Python · Pandas · GeoPandas · Data Visualization"
+          />
+        </div>
+      </section>
+
+      <section id="experience" class="section">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <p class="text-sm uppercase tracking-[0.32em] text-slate-500 dark:text-slate-400">Experience</p>
+            <h2 class="mt-3 text-3xl font-semibold text-slate-950 dark:text-white">Background</h2>
+          </div>
+        </div>
+        <div class="mt-8 grid gap-5">
+          <ExperienceCard
+            role="Data Analyst Intern"
+            company="Placeholder Company"
+            dates="Summer 2025"
+            description="I supported a small team by cleaning datasets, building summary reports, and validating models used for trading and risk monitoring."
+          />
+          <ExperienceCard
+            role="Software Engineering Intern"
+            company="Placeholder Company"
+            dates="Spring 2025"
+            description="I worked on tooling and automation for internal workflows, including data ingestion pipelines and lightweight dashboards for business teams."
+          />
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <p class="text-sm uppercase tracking-[0.32em] text-slate-500 dark:text-slate-400">Contact</p>
+            <h2 class="mt-3 text-3xl font-semibold text-slate-950 dark:text-white">Get in touch</h2>
+          </div>
+        </div>
+        <div class="mt-8 grid gap-4 sm:grid-cols-3">
+          <article class="card">
+            <div class="card-inner">
+              <p class="text-sm text-slate-500 dark:text-slate-400">Email</p>
+              <a href="mailto:hello@example.com" class="mt-2 block text-base font-semibold text-slate-900 dark:text-white">hello@example.com</a>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-inner">
+              <p class="text-sm text-slate-500 dark:text-slate-400">GitHub</p>
+              <a href="#" class="mt-2 block text-base font-semibold text-slate-900 dark:text-white">github.com/placeholder</a>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-inner">
+              <p class="text-sm text-slate-500 dark:text-slate-400">LinkedIn</p>
+              <a href="#" class="mt-2 block text-base font-semibold text-slate-900 dark:text-white">linkedin.com/in/placeholder</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
