@@ -1,119 +1,158 @@
 ---
+import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import ExperienceCard from '../components/ExperienceCard.astro';
+import { Image } from 'astro:assets';
+import citiBikePreview from '../../images/temp_precip_heatmap.png';
+import nflPreview from '../../images/fig1_stability_curves.png';
+import headshot from '../../images/Mattformal suit copy.jpg';
+
+const resumeUrl = `${import.meta.env.BASE_URL}/resume.pdf`;
 ---
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Matthew Zhou | Finance + Computer Science @ NYU</title>
     <meta
       name="description"
-      content="I'm a NYU student studying Finance and Computer Science, building data-driven tools and dashboards that turn messy data into practical insights."
+      content="Matthew Zhou is a NYU Stern and Courant student building data, analytics, and finance projects with Python, SQL, and statistical modeling."
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
   </head>
-  <body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+  <body>
     <Navbar />
-    <main class="container">
-      <section id="about" class="section py-16">
-        <div class="max-w-3xl">
-          <p class="text-sm uppercase tracking-[0.32em] text-slate-500 dark:text-slate-400">Finance + Computer Science @ NYU</p>
-          <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-950 dark:text-white sm:text-5xl">
-            Matthew Zhou
-          </h1>
-          <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-700 dark:text-slate-300">
-            I'm focused on building data-driven tools at the intersection of software, analytics, and finance. I enjoy turning messy data into clear insights and shipping practical solutions through iteration and experimentation.
-          </p>
-          <div class="mt-8 flex flex-wrap gap-3">
-            <a href="#projects" class="rounded-full border border-slate-300 bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700 dark:border-slate-600 dark:bg-slate-100 dark:text-slate-950 dark:hover:bg-slate-200">
-              View Projects
-            </a>
-            <a href="#" class="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800">
-              Resume
-            </a>
-            <a href="#" class="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800">
-              GitHub
-            </a>
-            <a href="#" class="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800">
-              LinkedIn
-            </a>
+    <main>
+      <section id="about" class="section hero-section">
+        <div class="container grid items-center gap-14 py-20 lg:grid-cols-[1.08fr_0.92fr] lg:py-28">
+          <div class="max-w-3xl">
+            <h1 class="hero-title hero-animate text-white">
+              Matthew Zhou
+            </h1>
+            <p class="hero-animate mt-5 text-lg font-semibold text-slate-300 sm:text-xl">
+              Finance @ NYU Stern + Computer Science @ Courant
+            </p>
+            <p class="hero-animate mt-7 max-w-xl text-base leading-8 text-slate-300">
+              I'm a Finance and Computer Science student at NYU interested in building practical, data-driven solutions across software, analytics, and finance. I enjoy working on projects that combine technical problem-solving with real-world applications, whether that's analyzing data, building tools, or exploring how technology can improve decision-making.
+            </p>
+            <div class="hero-animate mt-9 flex flex-wrap gap-3">
+              <a href={resumeUrl} class="button button-secondary">Resume</a>
+              <a href="https://github.com/mzhou3299" class="button button-secondary">GitHub</a>
+              <a href="https://www.linkedin.com/in/matthew-zhou-128365288" class="button button-secondary">LinkedIn</a>
+              <a href="mailto:matthew.zhou1211@gmail.com" class="button button-secondary">Email</a>
+            </div>
+          </div>
+
+          <div class="hero-portrait hero-animate mx-auto w-full max-w-xs">
+            <div class="hero-portrait-frame">
+              <Image
+                src={headshot}
+                alt="Matthew Zhou wearing a formal suit"
+                class="hero-portrait-image"
+                widths={[384, 640, 768]}
+                sizes="(max-width: 1023px) 320px, 320px"
+                quality={95}
+                format="webp"
+                loading="eager"
+                fetchpriority="high"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="projects" class="section">
-        <div class="flex items-center justify-between gap-4">
-          <div>
-            <p class="text-sm uppercase tracking-[0.32em] text-slate-500 dark:text-slate-400">Projects</p>
-            <h2 class="mt-3 text-3xl font-semibold text-slate-950 dark:text-white">Selected work</h2>
+      <section id="projects" class="section projects-section">
+        <div class="container py-20 lg:py-24">
+          <div class="section-heading reveal">
+            <p class="section-kicker">Selected work</p>
+            <h2 class="section-title">Projects</h2>
           </div>
-        </div>
-        <div class="mt-8 grid gap-5 md:grid-cols-2">
-          <ProjectCard
-            title="NFL Metric Stability"
-            description="I analyzed how quickly NFL performance metrics stabilize during the season and whether early-season metrics predict future outcomes. I used statistical analysis and bootstrapping to separate signal from noise in football analytics."
-            tech="Python · Pandas · Statistics · Data Visualization"
-          />
-          <ProjectCard
-            title="Citi Bike Traffic Analysis"
-            description="I analyzed NYC Citi Bike usage patterns to understand station-level demand, geographic hotspots, and system imbalances using trip data and external datasets."
-            tech="Python · Pandas · GeoPandas · Data Visualization"
-          />
+          <div class="mx-auto mt-10 grid max-w-5xl gap-6">
+            <ProjectCard
+              title="NFL Metric Stability"
+              description="Analyzed how quickly NFL performance metrics stabilize during the season and whether early-season statistics predict remaining point differential. Used Python, Pandas, and statistical analysis to compare signal strength across EPA, success rate, and turnover metrics."
+              tech="Python · Pandas · Statistics · Data Visualization"
+              href="https://github.com/mzhou3299/nfl-metric-stability"
+              imageSrc={nflPreview.src}
+              imageAlt="Stability curve chart from the NFL metric stability project"
+            />
+            <ProjectCard
+              title="Citi Bike Traffic Analysis"
+              description="Analyzed 2024 Citi Bike trips with weather and holiday data to uncover temporal and spatial patterns. Built geospatial station-demand models and studied neighborhood variance and inter-station co-movement."
+              tech="Python · Pandas · GeoPandas · Matplotlib · Seaborn"
+              href="https://github.com/mzhou3299/citibike-demand-analysis-2024"
+              imageSrc={citiBikePreview.src}
+              imageAlt="Temperature and precipitation heatmap from the Citi Bike traffic analysis project"
+            />
+          </div>
         </div>
       </section>
 
-      <section id="experience" class="section">
-        <div class="flex items-center justify-between gap-4">
-          <div>
-            <p class="text-sm uppercase tracking-[0.32em] text-slate-500 dark:text-slate-400">Experience</p>
-            <h2 class="mt-3 text-3xl font-semibold text-slate-950 dark:text-white">Background</h2>
+      <section id="experience" class="section experience-section">
+        <div class="container py-20 lg:py-24">
+          <div class="section-heading reveal">
+            <p class="section-kicker">Background</p>
+            <h2 class="section-title">Experience</h2>
           </div>
-        </div>
-        <div class="mt-8 grid gap-5">
-          <ExperienceCard
-            role="Data Analyst Intern"
-            company="Placeholder Company"
-            dates="Summer 2025"
-            description="I supported a small team by cleaning datasets, building summary reports, and validating models used for trading and risk monitoring."
-          />
-          <ExperienceCard
-            role="Software Engineering Intern"
-            company="Placeholder Company"
-            dates="Spring 2025"
-            description="I worked on tooling and automation for internal workflows, including data ingestion pipelines and lightweight dashboards for business teams."
-          />
-        </div>
-      </section>
-
-      <section id="contact" class="section">
-        <div class="flex items-center justify-between gap-4">
-          <div>
-            <p class="text-sm uppercase tracking-[0.32em] text-slate-500 dark:text-slate-400">Contact</p>
-            <h2 class="mt-3 text-3xl font-semibold text-slate-950 dark:text-white">Get in touch</h2>
+          <div class="mx-auto mt-10 grid max-w-5xl gap-5 md:grid-cols-2">
+            <ExperienceCard
+              role="Undergraduate Research Assistant"
+              company="NYU Stern TOPS Department"
+              dates="Sep. 2025 - Present"
+              description="Built a Wikidata ingestion pipeline, improved fuzzy matching, cached LLM responses, and raised multi-model ensemble F1 from 0.884 to 0.9514."
+            />
+            <ExperienceCard
+              role="Data Intern"
+              company="The Barton Partnership"
+              dates="Jun. 2025 - Oct. 2025"
+              description="Managed candidate datasets for 2,000+ financial services and consulting professionals, using Excel and Python to support market-mapping work."
+            />
+            <ExperienceCard
+              role="Data Analytics Intern"
+              company="NRG Energy"
+              dates="May 2024 - Aug. 2024"
+              description="Built a Python model to estimate profitability for new retail channel partners and studied Texas deregulated electricity pricing."
+            />
+            <ExperienceCard
+              role="Finance Intern"
+              company="Keywise Capital Management"
+              dates="May 2023 - Aug. 2023"
+              description="Evaluated EV companies through financial statement analysis, DCF, and comps, then summarized sector trends in weekly reports."
+            />
           </div>
-        </div>
-        <div class="mt-8 grid gap-4 sm:grid-cols-3">
-          <article class="card">
-            <div class="card-inner">
-              <p class="text-sm text-slate-500 dark:text-slate-400">Email</p>
-              <a href="mailto:hello@example.com" class="mt-2 block text-base font-semibold text-slate-900 dark:text-white">hello@example.com</a>
-            </div>
-          </article>
-          <article class="card">
-            <div class="card-inner">
-              <p class="text-sm text-slate-500 dark:text-slate-400">GitHub</p>
-              <a href="#" class="mt-2 block text-base font-semibold text-slate-900 dark:text-white">github.com/placeholder</a>
-            </div>
-          </article>
-          <article class="card">
-            <div class="card-inner">
-              <p class="text-sm text-slate-500 dark:text-slate-400">LinkedIn</p>
-              <a href="#" class="mt-2 block text-base font-semibold text-slate-900 dark:text-white">linkedin.com/in/placeholder</a>
-            </div>
-          </article>
         </div>
       </section>
     </main>
+    <script>
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.reveal').forEach((element, index) => {
+        element.style.setProperty('--reveal-delay', `${Math.min(index % 4, 3) * 80}ms`);
+        revealObserver.observe(element);
+      });
+
+      const navLinks = document.querySelectorAll('.nav-link');
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            navLinks.forEach((link) => {
+              link.classList.toggle('is-active', link.getAttribute('href') === `#${entry.target.id}`);
+            });
+          }
+        });
+      }, { rootMargin: '-35% 0px -55%', threshold: 0 });
+
+      document.querySelectorAll('main > section[id]').forEach((section) => sectionObserver.observe(section));
+    </script>
   </body>
 </html>
